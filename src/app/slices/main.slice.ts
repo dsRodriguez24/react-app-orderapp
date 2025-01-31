@@ -1,24 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const main = createSlice({
-  name: 'counter',
-  initialState: {
-    value: 0,
-  },
-  reducers: {
-    increment: (state) => {
-      state.value += 1
+    name: 'counter',
+    initialState: {
+        authenticated: false,
+        token: null,
+        rol: null,
+        nombre: null,
     },
-    decrement: (state) => {
-      state.value -= 1
+    reducers: {
+        login: (state, action) => {
+            state.authenticated = true;
+            state.token         = action.payload.jwt;
+            state.rol           = action.payload.rol;
+            state.nombre        = action.payload.nombre;
+        },
+        logout: (state) => {
+            state.authenticated = false;
+            state.token         = null;
+            state.rol           = null;
+            state.nombre        = null;
+        },
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
-    },
-  },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = main.actions
+export const { login } = main.actions
 
 export default main.reducer
