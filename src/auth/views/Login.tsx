@@ -1,19 +1,20 @@
-import {  NavLink, useNavigate } from "react-router-dom"
+import {  NavLink } from "react-router-dom"
 import { useForm } from "../../hooks/useForm";
 import { sendLogin } from "../../api";
+// import { generarSweetAlert } from "../../helpers/sweetalert";
+import { useDispatch } from "react-redux";
+import { login } from "../../app/slices/main.slice";
 import { generarSweetAlert } from "../../helpers/sweetalert";
-import { useDispatch, useSelector } from "react-redux";
-import { login as  loginRedux } from "../../app/slices/main.slice";
 
 export const Login = () => {
     const dispatch = useDispatch();
-    const dataMain = useSelector( (state: any) => state.main )
 
     const initialState = {
         email: "",
         password: ""
     }; 
-    const { changeForm, setForm ,email, password } = useForm(initialState);
+
+    const { changeForm, email, password } = useForm(initialState);
 
     const handlerSubmit = async (e: any) => {
         e.preventDefault();
@@ -22,13 +23,9 @@ export const Login = () => {
         const respuesta = await sendLogin(datos);
         const { data , message, status } = respuesta;
 
-        generarSweetAlert(status, message)
+        generarSweetAlert(status, message);
         if(!status) return;
-        dispatch( loginRedux( data ) );
-        setForm(initialState);
-
-        return;
-
+        dispatch( login( data ) );
 
     }
 
@@ -37,7 +34,6 @@ export const Login = () => {
         <div className="flex min-h-full flex-col justify-center px-6 py-2 lg:px-8">
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form className="space-y-6" onSubmit={handlerSubmit} method="POST">
-                    <h1>{ JSON.stringify(dataMain) }</h1>
 
                     <div className="mb-3">
                         <label className="block text-sm/6 font-medium text-gray-900">Email</label>
