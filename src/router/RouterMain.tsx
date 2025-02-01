@@ -1,10 +1,23 @@
 import { useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom"
+import {  Route, Routes, useNavigate } from "react-router-dom"
 import { RouterAuth } from "../auth/router/RouterAuth";
 import { RouterOrderApp } from "../orderapp/router/RouterOrderApp";
+import { useEffect } from "react";
 
 export const RouterMain = () => {
     const { authenticated } = useSelector( (state: any) =>  state.main  );
+    const navigate = useNavigate();
+
+    useEffect( () => {
+      
+        if (authenticated) {
+          navigate("/app/dashboard");
+        }else{
+          navigate("/auth/login");
+        }
+          
+
+    }, [ authenticated ] )
 
 
   return (
@@ -12,11 +25,11 @@ export const RouterMain = () => {
         <Routes>
             {
                 ( authenticated ) 
-                ? <Route path="/*" element={ <RouterOrderApp/> } /> 
+                ? <Route path="/app/*" element={ <RouterOrderApp/> } /> 
                 : <Route path="/auth/*" element={ <RouterAuth/> }/> 
             }
 
-            <Route path="/*" element={ <Navigate to="/auth/login"/> } /> 
+            {/* <Route path="/*" element={ <Navigate to="/auth/login"/> } />  */}
 
         </Routes>
     </>
