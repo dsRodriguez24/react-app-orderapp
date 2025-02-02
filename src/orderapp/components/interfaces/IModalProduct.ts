@@ -1,3 +1,3 @@
 export interface ModalProductProps {
-    title : string
+    title ?: string
 }

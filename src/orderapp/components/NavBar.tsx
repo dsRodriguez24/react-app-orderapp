@@ -1,16 +1,25 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "../../app/slices/main.slice";
 
 export const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [ isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  const dispatch = useDispatch();
+
 
   const routes = [
     { route: "/app/dasboard", name: "Inicio" },
     { route: "/app/productos", name: "Productos" },
     { route: "/app/ordenes", name: "Órdenes de compra" },
   ];
+
+  const handlerLogOut = () => {
+    dispatch( logout() );
+  }
+
 
   return (
     <nav className="bg-white border-b border-gray-200 dark:bg-gray-900">
@@ -26,6 +35,7 @@ export const NavBar = () => {
 
           {/* Logo / Nombre */}
           <div className="flex items-center">
+            <img className="mx-auto h-10 w-auto" src="../../../logo_random.png" alt="" />
             <span className="text-2xl font-semibold dark:text-white">Order App</span>
           </div>
 
@@ -48,7 +58,7 @@ export const NavBar = () => {
 
           {/* Botón de Cerrar Sesión */}
           <div className="hidden md:flex">
-            <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+            <button onClick={handlerLogOut} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
               Cerrar sesión
             </button>
           </div>

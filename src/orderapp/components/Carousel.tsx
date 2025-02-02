@@ -6,13 +6,13 @@ export const Carousel = () => {
 <div id="indicators-carousel" className="relative w-full" data-carousel="static">
     <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         <div className="hidden duration-700 ease-in-out" data-carousel-item="active">
-            <img src="resources/carousel1.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+            <img src="https://static-cse.canva.com/blob/984342/FotoDeProducto.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="resources/carousel2.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+            <img src="https://www.hostinger.es/tutoriales/wp-content/uploads/sites/7/2024/09/image.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="resources/carousel3.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+            <img src="https://emprendepyme.net/wp-content/uploads/2023/03/cualidades-producto.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
         </div>
     </div>
     <div className="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
