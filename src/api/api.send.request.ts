@@ -1,5 +1,8 @@
 import axios from "axios";
 import { Request } from "./interfaces/IRequest";
+import store from "../app/store";
+import { logout } from "../app/slices/main.slice";
+import Swal from "sweetalert2";
 
 const BASEPATH = "http://localhost:8080";
 
@@ -14,6 +17,9 @@ export const sendUrlRequest = async ( { url, data, headers, metodo } : Request )
             case 'GET':
                 const resp_get  = await axios.get(url, headers );
                 const datos_get = resp_get.data;
+                // console.log("Respuesta get axios ", datos_get);
+                
+
                 return datos_get;
                 
             case 'POST':
@@ -40,6 +46,10 @@ export const sendUrlRequest = async ( { url, data, headers, metodo } : Request )
 
     } catch (error: any) {
 
+        if (error.response.data.errorAuth) {
+            store.dispatch(logout());
+            Swal.fire({title: "Error", text: error.response.data.message, icon: "error" })
+        }
 
         return { status: false, message: error.response.data.message }
     }
