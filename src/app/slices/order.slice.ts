@@ -6,6 +6,8 @@ export const order = createSlice({
     initialState: {
         productsSelected: [],
         searchTerm: "",
+        orderIdActive: null,
+        orderActiveDetail: null
     },
     reducers: {
         setSearchTerm: (state, action) => {
@@ -28,10 +30,14 @@ export const order = createSlice({
         resetProduct: (state) => {
             state.productsSelected = [];
         },
+        setOrderActive: (state, action) => {
+            state.orderIdActive = action.payload.id;
+            state.orderActiveDetail = action.payload.order;
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { setSearchTerm , addProduct, removeProduct, updateProduct, resetProduct } = order.actions
+export const { setSearchTerm , addProduct, removeProduct, updateProduct, resetProduct , setOrderActive} = order.actions
 
 export default order.reducer
