@@ -30,7 +30,7 @@ export const ListitemEditing = (props : any) => {
             precio_total: Number(resultado)
         }
 
-        console.log("Enviando contenido al dispatch " , data);
+        // console.log("Enviando contenido al dispatch " , data);
         
         dispatch( updateProduct( data ) )
 
