@@ -4,7 +4,7 @@ type MetodoHttp = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 export interface Request {
     data: Object,
-    headers: AxiosHeaders,
+    headers: any,
     metodo : MetodoHttp,
     url : string,
 }

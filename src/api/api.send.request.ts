@@ -1,10 +1,10 @@
 import axios from "axios";
 import { Request } from "./interfaces/IRequest";
 
-
 const BASEPATH = "http://localhost:8080";
 
 export const sendUrlRequest = async ( { url, data, headers, metodo } : Request ) => {
+
 
     try {
         
@@ -12,22 +12,24 @@ export const sendUrlRequest = async ( { url, data, headers, metodo } : Request )
 
         switch (metodo) {
             case 'GET':
-                const resp_get  = await axios.get(url, { headers });
+                const resp_get  = await axios.get(url, headers );
                 const datos_get = resp_get.data;
                 return datos_get;
                 
             case 'POST':
-                const resp_post  = await axios.post(url, data, { headers });
+                const resp_post  = await axios.post(url, data, headers );
                 const datos_post = resp_post.data;
+                console.log("Respuesta Axios" , datos_post);
+                
                 return datos_post;
             
             case 'PUT':
-            const resp_put  = await axios.post(url, data, { headers });
+            const resp_put  = await axios.put(url, data, headers );
             const datos_put = resp_put.data;
                 return datos_put;
     
             case 'DELETE':
-            const resp_delete  = await axios.post(url, data, { headers });
+            const resp_delete  = await axios.delete(url, headers );
             const datos_delete = resp_delete.data;
                 return datos_delete;
         
@@ -37,7 +39,8 @@ export const sendUrlRequest = async ( { url, data, headers, metodo } : Request )
         }
 
     } catch (error: any) {
-        // console.log("Error registrado => ", error);
+
+
         return { status: false, message: error.response.data.message }
     }
 }
