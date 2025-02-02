@@ -11,7 +11,7 @@ export const NavBar = () => {
 
 
   const routes = [
-    { route: "/app/dashboard", name: "Inicio" },
+    // { route: "/app/dashboard", name: "Inicio" },
     { route: "/app/productos", name: "Productos" },
     { route: "/app/ordenes", name: "Órdenes de compra" },
   ];

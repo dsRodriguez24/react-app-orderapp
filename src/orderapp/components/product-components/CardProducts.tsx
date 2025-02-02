@@ -1,6 +1,6 @@
 
 import { useDispatch } from "react-redux";
-import { CardParams } from "../interfaces/ICardProduct"
+import { CardParams } from "../interfaces/IProduct"
 import { offcanvasShow } from "../../../app/slices/product.slice";
 
 

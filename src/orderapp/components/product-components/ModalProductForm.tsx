@@ -33,11 +33,11 @@ export const ModalProductForm = () => {
             stock ,
         }
 
-        console.log(`Enviando ${token} datos ` , datos);
+        // console.log(`Enviando ${token} datos ` , datos);
         
         
         const respuesta = await saveProduct(datos, token);
-        console.log(`Respuesta ` , respuesta);
+        // console.log(`Respuesta ` , respuesta);
         const { message, status } = respuesta; 
         generarSweetAlert(status, message);
 
