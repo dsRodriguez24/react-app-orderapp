@@ -38,6 +38,6 @@ export const main = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { login } = main.actions
+export const { login, logout } = main.actions
 
 export default main.reducer
