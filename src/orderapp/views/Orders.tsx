@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { ListOrders, NewOrder } from "../components/order-components"
+import { DetailOrder, ListOrders, NewOrder } from "../components/order-components"
 export const Orders = () => {
   const { rol } = useSelector( (state:any) => state.main);
 
@@ -11,6 +11,8 @@ export const Orders = () => {
       }
 
       <ListOrders/>
+
+      <DetailOrder/>
     
 
     </div>

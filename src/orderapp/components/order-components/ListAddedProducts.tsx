@@ -4,7 +4,7 @@ import { saveOrder } from "../../../api";
 import { generarSweetAlert } from "../../../helpers/sweetalert";
 import { resetProduct } from "../../../app/slices/order.slice";
 import { Seller } from "./Seller";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const ListAddedProducts = () => {
   const dispatch = useDispatch();
@@ -32,9 +32,16 @@ export const ListAddedProducts = () => {
       dispatch( resetProduct() );
   }
 
+  useEffect(() => {
+    console.log("productsSelected ha cambiado");
+    
+  }, [productsSelected])
+  
+
+
   return (
     <div>
-        <Seller setSeller={setSeller}/>
+        <Seller setSeller={setSeller} seller={seller}/>
 
         <h1 className="text-1xl text-bold  my-4">Productos agregados</h1>
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

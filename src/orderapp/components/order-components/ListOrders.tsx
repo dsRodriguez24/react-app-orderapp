@@ -1,6 +1,31 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux"
+import { getOrders } from "../../../api";
+import ItemListOrders from "./ItemListOrders";
 
 export const ListOrders = () => {
-  return (
+    const { token } = useSelector((state:any) => state.main);
+    const { productsSelected } = useSelector((state:any) => state.orden);
+    const [itemsOrder, setItemsOrder] = useState([])
+    
+    useEffect(() => {
+        
+        (async function() {
+            const respuesta = await getOrders(token);
+            console.log(respuesta);
+            
+            const { data } = respuesta;
+            if (!data) return; 
+            console.log("Seteando " , data);
+            
+            setItemsOrder(data)
+
+          })();
+    }, [token, productsSelected])
+    
+
+
+    return (
     <>
         <h1 className="text-2xl my-4">Tus ordenes de compra</h1>
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -21,7 +46,11 @@ export const ListOrders = () => {
                 </tr>
             </thead>
             <tbody>
-
+                {
+                    itemsOrder.map( (item: any) => (
+                        <ItemListOrders dataItem={item}/>
+                    ) )
+                }
             </tbody>
         </table>
     </>
