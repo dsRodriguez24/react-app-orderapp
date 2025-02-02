@@ -32,3 +32,19 @@ export const sendLogin = async ( data: Object )=> {
     const datos = await sendUrlRequest(dataReq);
     return datos;
 }
+
+export const getUsersAdmin = async ( token : string )=> {
+    const dataReq: any = {
+        data:{},
+        headers: {
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": token,
+            },
+        },
+        metodo: 'GET',
+        url: '/users'
+    }
+    const datos = await sendUrlRequest(dataReq);
+    return datos;
+}
