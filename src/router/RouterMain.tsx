@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import {  Route, Routes, useNavigate } from "react-router-dom"
+import {  Navigate, Route, Routes, useNavigate } from "react-router-dom"
 import { RouterAuth } from "../auth/router/RouterAuth";
 import { RouterOrderApp } from "../orderapp/router/RouterOrderApp";
 import { useEffect } from "react";
@@ -11,7 +11,7 @@ export const RouterMain = () => {
     useEffect( () => {
       
         if (authenticated) {
-          navigate("/app/dashboard");
+          navigate("/app/productos");
         }else{
           navigate("/auth/login");
         }
@@ -29,7 +29,7 @@ export const RouterMain = () => {
                 : <Route path="/auth/*" element={ <RouterAuth/> }/> 
             }
 
-            {/* <Route path="/*" element={ <Navigate to="/auth/login"/> } />  */}
+            <Route path="/*" element={ <Navigate to="/auth/login"/> } /> 
 
         </Routes>
     </>
