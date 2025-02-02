@@ -26,9 +26,9 @@ export const Products = () => {
 
   return (
     <>
-        <Carousel/>
+        {/* <Carousel/> */}
 
-        <h2 className="text-3xl font-extrabold dark:text-white text-center">Productos</h2>
+        <h2 className="text-3xl font-bold dark:text-white text-center my-3">Productos</h2>
 
         <ModalProduct/>
 
