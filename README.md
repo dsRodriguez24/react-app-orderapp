@@ -8,7 +8,7 @@
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/dsRodriguez24/react-app-orderapp
-   cd tu-repositorio
+   cd react-app-orderapp
    ```
 2. Instala las dependencias:
    ```bash
